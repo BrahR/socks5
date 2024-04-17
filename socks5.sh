@@ -1,9 +1,16 @@
 #!/bin/bash
 
-echo -e "Please enter the username for the socks5 proxy:"
-read username
-echo -e "Please enter the password for the socks5 proxy:"
-read -s password
+# Check if both arguments are provided or ask for them
+if [ $# -ne 2 ]; then
+    echo -e "Please enter the username for the socks5 proxy:"
+    read username
+    echo -e "Please enter the password for the socks5 proxy:"
+    read -s password
+else
+    # Assign arguments to variables
+    username=$1
+    password=$2
+fi
 
 # Update repositories
 sudo apt update -y
