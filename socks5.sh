@@ -11,11 +11,14 @@ sudo apt update -y
 # Install dante-server
 sudo apt install dante-server -y
 
+# Get the name of the network interface
+interface=$(ip -o -4 route show to default | awk '{print $5}')
+
 # Create the configuration file
 sudo bash -c 'cat <<EOF > /etc/danted.conf
-logoutput: /var/log/danted.log
+logoutput: syslog
 internal: 0.0.0.0 port = 1080
-external: eth0
+external: '$interface'
 method: username none
 user.privileged: root
 user.notprivileged: nobody
