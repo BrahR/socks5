@@ -26,7 +26,8 @@ sudo bash -c 'cat <<EOF > /etc/danted.conf
 logoutput: syslog
 internal: 0.0.0.0 port = 1080
 external: '$interface'
-method: username none
+clientmethod: none
+socksmethod: username
 user.privileged: root
 user.notprivileged: nobody
 client pass {
